@@ -1,0 +1,33 @@
+-- STARSPACE DELTA LOADER
+
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+getgenv().isfile = function() return false end
+getgenv().readfile = function()
+    error("Delta tidak support readfile")
+end
+
+_G.Xan = {
+    Slide = function(a, b)
+        warn("[StarSpace]", a, b)
+    end
+}
+
+_G.StarshipCloud = {
+    RecordingData = nil
+}
+
+_G.StarshipForceCarryMode = false
+
+loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/jihatgahun-rgb/idkdkdkdkd/refs/heads/main/starship.lua"
+))()
+
+task.spawn(function()
+    repeat task.wait() until _G.StarSpace
+    _G.StarSpace.SetShowPath(false)
+end)
+
+warn("StarSpace siap")
